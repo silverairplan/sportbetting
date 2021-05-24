@@ -53,27 +53,39 @@ export default function Pulse({navigation})
         return false;
     }
 
+    let filterlist = filtersportlist()
+
     return(
         <View style={{flex:1,backgroundColor:'white'}}>
             <View style={style.container}>
-                <ScrollView behavior="padding" style={{flex:1}}>
-                    <View style={{padding:5}}>
-                        {
-                            filtersportlist().map((item)=>(
-                            <>
-                                <View style={{padding:5,backgroundColor:'#C63032'}}>
-                                    <Text style={style.title}>{item.title}</Text>
-                                </View>
+                {
+                    filterlist.length > 0 ? (
+                        <ScrollView behavior="padding" style={{flex:1}}>
+                            <View style={{padding:5}}>
                                 {
-                                    getsportlist(item.title).map((info,index)=>(
-                                        <PulseItem info={info} key={index} title={item.title} onshowgraph={(game,team,type)=>setgame({game:game,team,type})} favourite={getfavourite(info.teams)} setloading={setloading}></PulseItem>
+                                    filterlist.map((item)=>(
+                                    <>
+                                        <View style={{padding:5,backgroundColor:'#C63032'}}>
+                                            <Text style={style.title}>{item.title}</Text>
+                                        </View>
+                                        {
+                                            getsportlist(item.title).map((info,index)=>(
+                                                <PulseItem info={info} key={index} title={item.title} onshowgraph={(game,team,type)=>setgame({game:game,team,type})} favourite={getfavourite(info.teams)} setloading={setloading}></PulseItem>
+                                            ))
+                                        }
+                                    </>
                                     ))
                                 }
-                            </>
-                            ))
-                        }
-                    </View>
-                </ScrollView>
+                                
+                            </View>
+                        </ScrollView>
+                    ):(
+                        <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+                            <Text style={style.error}>There is no running sports</Text>
+                        </View>
+                    )
+                }
+                
                 <Loading visible={loading}></Loading>
                 <Graph info={game.game} isopen={game.game != null} setopen={()=>setgame({game:null,team:null})} team={game.team} type={game.type}></Graph>
             </View>
@@ -143,5 +155,8 @@ const style = StyleSheet.create({
     btn_text:{
         fontSize:RFValue(10,580),
         color:'white'
+    },
+    error:{
+        fontSize:RFValue(12,580)
     }
 })

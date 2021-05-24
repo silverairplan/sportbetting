@@ -31,7 +31,7 @@ export default function Membership({navigation})
                     allowedCardAuthMethods,
                 },
                 transaction: {
-                    totalPrice: amount,
+                    totalPrice: amount + "",
                     totalPriceStatus: 'FINAL',
                     currencyCode: 'USD',
                 },
@@ -131,7 +131,7 @@ export default function Membership({navigation})
                                     <Text style={{fontSize:RFValue(14,580),color:'black',textAlign:'center'}}>14.99$/Month</Text>
                                 </View>
                             </View>
-                            <TouchableOpacity style={[style.buy,{backgroundColor:'#C63032'}]} onPress={payment(89.94,0,'+6 months')}>
+                            <TouchableOpacity style={[style.buy,{backgroundColor:'#C63032'}]} onPress={()=>payment(89.94,0,'+6 months')}>
                                 <Feather name="shopping-cart" color="white" fontSize={RFValue(25,580)}></Feather>
                                 <Text style={[style.buytext,{marginLeft:5}]}>Buy</Text>
                             </TouchableOpacity>

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "237490299746-9v0hgncnh2oqk0v3kjrvvjcjpdectpnm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.org.liveline",
+            "certificate_hash": "b7b645218ae62c62b4bc46b90675fdc09ac744b0"
+          }
+        },
+        {
           "client_id": "237490299746-r1srt7ti31inqfsf9hvs5u9rqdua90iv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

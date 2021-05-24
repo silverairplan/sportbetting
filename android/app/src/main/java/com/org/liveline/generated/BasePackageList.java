@@ -1,4 +1,4 @@
-package com.sportbetting.generated;
+package com.org.liveline.generated;
 
 import java.util.Arrays;
 import java.util.List;
